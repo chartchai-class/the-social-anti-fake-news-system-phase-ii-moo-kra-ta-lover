@@ -17,7 +17,9 @@ public class News {
     @EqualsAndHashCode.Exclude
     Long id;
     String topic;
+    @Column(columnDefinition = "TEXT")
     String shortDetail;
+    @Column(columnDefinition = "TEXT")
     String fullDetail;
     String reporter;
     String reportDate;

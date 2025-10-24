@@ -17,6 +17,7 @@ public class Comment {
     Long id;
     String user;
     String vote;
+    @Column(columnDefinition = "TEXT")
     String comment;
     @ElementCollection
     List<String> imageUrls;
