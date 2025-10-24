@@ -27,7 +27,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void delete(Comment comment) {
-        commentDao.delete(comment);
+    public void delete(Long id) {
+        commentDao.delete(id);
     }
 }

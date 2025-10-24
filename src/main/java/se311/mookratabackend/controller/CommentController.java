@@ -27,7 +27,7 @@ public class CommentController {
         if (comment == null) {
             return ResponseEntity.notFound().build();
         }
-        commentService.delete(comment);
+        commentService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

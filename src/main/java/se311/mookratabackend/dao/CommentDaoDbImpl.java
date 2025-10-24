@@ -29,7 +29,7 @@ public class CommentDaoDbImpl implements CommentDao {
     }
 
     @Override
-    public void delete(Comment comment) {
-        commentRepository.deleteById(comment.getId());
+    public void delete(Long id) {
+        commentRepository.deleteById(id);
     }
 }

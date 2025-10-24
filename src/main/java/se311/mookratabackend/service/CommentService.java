@@ -7,5 +7,5 @@ public interface CommentService {
     Page<Comment> getComments(Integer pageSize, Integer page);
     Comment getComments(Long id);
     Comment save(Comment comment);
-    void delete(Comment comment);
+    void delete(Long id);
 }

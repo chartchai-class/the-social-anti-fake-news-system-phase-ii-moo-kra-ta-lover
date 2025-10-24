@@ -40,7 +40,7 @@ public class NewsController {
         if( output != null){
             return ResponseEntity.ok(LabMapper.INSTANCE.getNewsDto(output));
         } else{
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
         }
     }
 
