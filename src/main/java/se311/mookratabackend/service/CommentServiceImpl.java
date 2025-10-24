@@ -25,4 +25,9 @@ public class CommentServiceImpl implements CommentService {
     public Comment save(Comment comment) {
         return commentDao.save(comment);
     }
+
+    @Override
+    public void delete(Comment comment) {
+        commentDao.delete(comment);
+    }
 }
