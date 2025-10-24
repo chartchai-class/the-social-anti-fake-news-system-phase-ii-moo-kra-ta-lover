@@ -1,0 +1,34 @@
+package se311.mookratabackend.service;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import se311.mookratabackend.dao.NewsDao;
+import se311.mookratabackend.entity.News;
+
+@Service
+@RequiredArgsConstructor
+public class NewsServiceImpl implements NewsService{
+    final NewsDao newsDao;
+
+    @Override
+    public Page<News> getNews(Integer pageSize, Integer page) {
+        return newsDao.getNews(pageSize, page);
+    }
+
+    @Override
+    public News getNew(Long id) {
+        return newsDao.getNews(id);
+    }
+
+    @Override
+    public News save(News news) {
+        return newsDao.save(news);
+    }
+
+    @Override
+    public Page<News> getNews(String detail, Pageable pageable) {
+        return newsDao.getNews(detail, pageable);
+    }
+}
