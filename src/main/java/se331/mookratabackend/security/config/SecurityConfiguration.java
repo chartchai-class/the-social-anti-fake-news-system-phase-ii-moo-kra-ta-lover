@@ -42,7 +42,7 @@ public class SecurityConfiguration {
             .authorizeHttpRequests((authorize) -> {
               authorize
                       .requestMatchers("/api/v1/auth/**").permitAll()
-                      .requestMatchers(HttpMethod.GET,"/news").permitAll()
+                      .requestMatchers(HttpMethod.GET,"/news").hasRole("READER")
                       .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                       .anyRequest().authenticated();
             })
