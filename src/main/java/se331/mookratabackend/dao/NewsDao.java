@@ -1,8 +1,8 @@
-package se311.mookratabackend.dao;
+package se331.mookratabackend.dao;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import se311.mookratabackend.entity.News;
+import se331.mookratabackend.entity.News;
 
 public interface NewsDao {
     Page<News> getNews(Integer pageSize, Integer page);

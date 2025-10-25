@@ -1,4 +1,4 @@
-package se311.mookratabackend.controller;
+package se331.mookratabackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import se311.mookratabackend.entity.News;
-import se311.mookratabackend.service.NewsService;
-import se311.mookratabackend.util.LabMapper;
+import se331.mookratabackend.entity.News;
+import se331.mookratabackend.service.NewsService;
+import se331.mookratabackend.util.LabMapper;
 
 @Controller
 @RequiredArgsConstructor

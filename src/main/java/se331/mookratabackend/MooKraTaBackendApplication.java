@@ -1,4 +1,4 @@
-package se311.mookratabackend;
+package se331.mookratabackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

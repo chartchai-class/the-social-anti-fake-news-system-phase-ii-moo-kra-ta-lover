@@ -1,10 +1,9 @@
-package se311.mookratabackend.dao;
+package se331.mookratabackend.service;
 
 import org.springframework.data.domain.Page;
-import se311.mookratabackend.entity.Comment;
-import se311.mookratabackend.entity.News;
+import se331.mookratabackend.entity.Comment;
 
-public interface CommentDao {
+public interface CommentService {
     Page<Comment> getComments(Integer pageSize, Integer page);
     Comment getComments(Long id);
     Comment save(Comment comment);

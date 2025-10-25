@@ -1,4 +1,4 @@
-package se311.mookratabackend.controller;
+package se331.mookratabackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import se311.mookratabackend.entity.Comment;
-import se311.mookratabackend.service.CommentService;
-import se311.mookratabackend.util.LabMapper;
+import se331.mookratabackend.entity.Comment;
+import se331.mookratabackend.service.CommentService;
+import se331.mookratabackend.util.LabMapper;
 
 @Controller
 @RequiredArgsConstructor

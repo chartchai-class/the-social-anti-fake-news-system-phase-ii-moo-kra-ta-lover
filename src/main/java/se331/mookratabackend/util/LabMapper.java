@@ -1,11 +1,14 @@
-package se311.mookratabackend.util;
+package se331.mookratabackend.util;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import se311.mookratabackend.entity.Comment;
-import se311.mookratabackend.entity.CommentDTO;
-import se311.mookratabackend.entity.News;
-import se311.mookratabackend.entity.NewsDTO;
+import se331.mookratabackend.entity.Comment;
+import se331.mookratabackend.entity.CommentDTO;
+import se331.mookratabackend.entity.News;
+import se331.mookratabackend.entity.NewsDTO;
+import se331.mookratabackend.security.user.UserDTO;
+import se331.mookratabackend.security.user.User;
+
 
 import java.util.List;
 
@@ -16,6 +19,8 @@ public interface LabMapper {
     List<NewsDTO> getNewsDto(List<News> events);
     CommentDTO getCommentDto(Comment comment);
     List<CommentDTO> getCommentDto(List<Comment> comments);
+    UserDTO getUserDto(User user);
+
 //    @Mapping(target = "roles", source = "user.roles")
 //    OrganizerAuthDTO getOrganizerAuthDto(Organizer organizer);
 //    ParticipantDTO getParticipantDto(Participant participant);

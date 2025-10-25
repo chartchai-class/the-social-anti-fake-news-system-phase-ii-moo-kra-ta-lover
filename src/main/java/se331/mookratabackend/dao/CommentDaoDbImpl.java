@@ -1,12 +1,12 @@
-package se311.mookratabackend.dao;
+package se331.mookratabackend.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
-import se311.mookratabackend.entity.Comment;
-import se311.mookratabackend.repository.CommentRepository;
+import se331.mookratabackend.entity.Comment;
+import se331.mookratabackend.repository.CommentRepository;
 
 @Repository
 @RequiredArgsConstructor

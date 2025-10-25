@@ -1,7 +1,7 @@
-package se311.mookratabackend.repository;
+package se331.mookratabackend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import se311.mookratabackend.entity.Comment;
+import se331.mookratabackend.entity.Comment;
 
 import java.util.List;
 

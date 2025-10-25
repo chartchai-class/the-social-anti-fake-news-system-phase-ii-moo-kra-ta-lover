@@ -1,7 +1,5 @@
-package se311.mookratabackend.entity;
+package se331.mookratabackend.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

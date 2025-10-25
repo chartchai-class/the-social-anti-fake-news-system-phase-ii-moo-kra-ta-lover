@@ -1,11 +1,11 @@
-package se311.mookratabackend.service;
+package se331.mookratabackend.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import se311.mookratabackend.dao.NewsDao;
-import se311.mookratabackend.entity.News;
+import se331.mookratabackend.dao.NewsDao;
+import se331.mookratabackend.entity.News;
 
 @Service
 @RequiredArgsConstructor

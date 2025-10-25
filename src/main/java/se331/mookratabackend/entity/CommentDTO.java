@@ -1,5 +1,4 @@
-package se311.mookratabackend.entity;
-import jakarta.persistence.*;
+package se331.mookratabackend.entity;
 import lombok.*;
 
 import java.util.List;

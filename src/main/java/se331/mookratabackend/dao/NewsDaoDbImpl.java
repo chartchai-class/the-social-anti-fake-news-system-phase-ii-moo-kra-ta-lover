@@ -1,4 +1,4 @@
-package se311.mookratabackend.dao;
+package se331.mookratabackend.dao;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
-import se311.mookratabackend.entity.News;
-import se311.mookratabackend.repository.NewsRepository;
+import se331.mookratabackend.entity.News;
+import se331.mookratabackend.repository.NewsRepository;
 
 @Repository
 @RequiredArgsConstructor

@@ -35,4 +35,4 @@ build/
 #Docker
 docker-compose.yml
 src/main/resources/application.yml
-src/main/java/se311/mookratabackend/config/InitApp.java
+src/main/java/se331/mookratabackend/config/InitApp.java

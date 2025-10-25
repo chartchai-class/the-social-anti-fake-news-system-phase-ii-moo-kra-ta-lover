@@ -1,10 +1,10 @@
-package se311.mookratabackend.service;
+package se331.mookratabackend.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-import se311.mookratabackend.dao.CommentDao;
-import se311.mookratabackend.entity.Comment;
+import se331.mookratabackend.dao.CommentDao;
+import se331.mookratabackend.entity.Comment;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package se311.mookratabackend;
+package se331.mookratabackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

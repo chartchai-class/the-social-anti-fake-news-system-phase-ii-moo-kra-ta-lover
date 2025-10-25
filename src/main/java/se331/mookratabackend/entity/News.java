@@ -1,4 +1,4 @@
-package se311.mookratabackend.entity;
+package se331.mookratabackend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
