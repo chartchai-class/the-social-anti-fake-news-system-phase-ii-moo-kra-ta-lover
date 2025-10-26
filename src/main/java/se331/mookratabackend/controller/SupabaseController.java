@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import se331.mookratabackend.util.StorageFileDto;
 import se331.mookratabackend.util.SupabaseStorageService;
+import software.amazon.awssdk.services.s3.S3Client;
 
 @Controller
 @RequiredArgsConstructor
 public class SupabaseController {
     final SupabaseStorageService supabaseStorageService;
+    final S3Client s3Client;
 
     @PostMapping("/uploadFile")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file){
@@ -33,4 +35,15 @@ public class SupabaseController {
             return ResponseEntity.status(500).body("Error uploading file:" + e.getMessage());
         }
     }
+
+    @PostMapping("/testSupabase")
+    public ResponseEntity<?> testSupabase() {
+        try {
+            s3Client.listBuckets(); // Test Supabase connection
+            return ResponseEntity.ok("Supabase connection OK");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Supabase connection failed: " + e.getMessage());
+        }
+    }
+
 }

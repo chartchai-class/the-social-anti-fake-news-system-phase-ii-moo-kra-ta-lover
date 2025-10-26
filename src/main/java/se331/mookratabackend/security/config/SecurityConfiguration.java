@@ -42,7 +42,10 @@ public class SecurityConfiguration {
             .authorizeHttpRequests((authorize) -> {
               authorize
                       .requestMatchers("/api/v1/auth/**").permitAll()
-                      .requestMatchers(HttpMethod.GET,"/news").hasRole("READER")
+                      .requestMatchers("/uploadImage").permitAll()
+                      .requestMatchers("/uploadFile").permitAll()
+                      .requestMatchers("/testSupabase").permitAll()
+                      .requestMatchers(HttpMethod.GET,"/news").hasAnyRole("READER", "MEMBER", "ADMIN")
                       .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                       .anyRequest().authenticated();
             })
