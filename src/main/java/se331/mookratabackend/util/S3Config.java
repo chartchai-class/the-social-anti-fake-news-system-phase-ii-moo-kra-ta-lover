@@ -1,33 +1,32 @@
 package se331.mookratabackend.util;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Value; //value import ตัวนี้
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.presigner.S3Presigner; // New import needed
+import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 @Configuration
 public class S3Config {
-    // Access key id will be read from the application.properties file during the application initialization
-    @Value ("${supabase.storage.accessKey}")
+    // Access key id will be read from the application.properties file during the application initialization.
+    @Value("${supabase.storage.accessKey}")
     private String accessKeyId;
 
-    // Secret access key will be read from the application
-    @Value ("${supabase.storage.secretKey}")
+    // Secret access key will be read from the application.properties file during the application initialization.
+    @Value("${supabase.storage.secretKey}")
     private String secretAccessKey;
 
-    @Value ("${supabase.storage.region}")
+    // Region will be read from the application.properties file during the application initialization.
+    @Value("${supabase.storage.region}")
     private String region;
-
-    @Value ("${supabase.storage.endpoint}")
+    @Value("${supabase.storage.endpoint}")
     private String endpoint;
 
     @Bean
     public S3Client getAmazonS3Client() {
         AwsBasicCredentials credentials =
                 AwsBasicCredentials.create(accessKeyId, secretAccessKey);
-
         return S3Client.builder()
                 .credentialsProvider(() -> credentials)
                 .region(software.amazon.awssdk.regions.Region.of(region))
@@ -37,7 +36,7 @@ public class S3Config {
     }
 
     @Bean
-    public S3Presigner getS3Presigner() {
+    public S3Presigner getAmazonS3Presigner() {
         AwsBasicCredentials credentials =
                 AwsBasicCredentials.create(accessKeyId, secretAccessKey);
 
