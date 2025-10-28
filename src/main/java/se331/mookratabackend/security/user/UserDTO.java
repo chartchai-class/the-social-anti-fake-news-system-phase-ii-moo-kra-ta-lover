@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -15,5 +17,5 @@ public class UserDTO {
     private String lastname;
     private String email;
     private String image;
-    // add any other fields you want to expose
+    private List<Role> roles;
 }
