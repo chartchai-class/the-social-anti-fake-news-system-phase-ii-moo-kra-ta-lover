@@ -49,4 +49,15 @@ public class NewsController {
         News output = newsService.save(news);
         return ResponseEntity.ok(LabMapper.INSTANCE.getNewsDto(output));
     }
+
+    @DeleteMapping("/news/{id}")
+    public ResponseEntity<?> deleteNews(@PathVariable("id") Long id){
+        News news = newsService.getNew(id);
+        if( news != null){
+            newsService.delete(id);
+            return ResponseEntity.noContent().build(); // 
+        } else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+        }
+    }
 }

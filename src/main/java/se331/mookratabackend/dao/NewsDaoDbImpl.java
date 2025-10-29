@@ -33,4 +33,9 @@ public class NewsDaoDbImpl implements NewsDao {
     public Page<News> getNews(String detail, Pageable pageable) {
         return newsRepository.findByShortDetailContainingOrFullDetailContaining(detail, detail, pageable);
     }
+
+    @Override
+    public void delete(Long id) {
+        newsRepository.deleteById(id);
+    }
 }

@@ -9,4 +9,5 @@ public interface NewsDao {
     News getNews(Long id);
     News save(News news);
     Page<News> getNews(String detail, Pageable pageable);
+    void delete(Long id);
 }

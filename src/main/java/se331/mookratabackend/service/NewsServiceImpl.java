@@ -31,4 +31,9 @@ public class NewsServiceImpl implements NewsService{
     public Page<News> getNews(String detail, Pageable pageable) {
         return newsDao.getNews(detail, pageable);
     }
+
+    @Override
+    public void delete(Long id) {
+        newsDao.delete(id);
+    }
 }
