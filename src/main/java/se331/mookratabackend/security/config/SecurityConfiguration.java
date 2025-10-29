@@ -46,7 +46,7 @@ public class SecurityConfiguration {
                       .requestMatchers("/uploadFile").permitAll()
                       .requestMatchers("/testSupabase").permitAll()
                       .requestMatchers(HttpMethod.GET,"/news").hasAnyRole("READER", "MEMBER", "ADMIN")
-                      .requestMatchers(HttpMethod.DELETE, "/news/**").hasAnyRole("ADMIN")
+                      .requestMatchers(HttpMethod.DELETE, "/news/**").permitAll()
                       .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                       .anyRequest().authenticated();
             })

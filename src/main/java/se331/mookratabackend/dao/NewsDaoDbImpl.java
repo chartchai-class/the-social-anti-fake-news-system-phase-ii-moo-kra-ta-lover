@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import se331.mookratabackend.entity.News;
 import se331.mookratabackend.repository.NewsRepository;
 
@@ -35,6 +36,7 @@ public class NewsDaoDbImpl implements NewsDao {
     }
 
     @Override
+    @Transactional
     public void delete(Long id) {
         newsRepository.deleteById(id);
     }
