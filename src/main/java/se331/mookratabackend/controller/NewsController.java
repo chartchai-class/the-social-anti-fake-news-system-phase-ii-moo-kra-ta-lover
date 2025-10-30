@@ -13,6 +13,8 @@ import se331.mookratabackend.entity.News;
 import se331.mookratabackend.service.NewsService;
 import se331.mookratabackend.util.LabMapper;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class NewsController {
@@ -54,10 +56,22 @@ public class NewsController {
     public ResponseEntity<?> deleteNews(@PathVariable("id") Long id){
         News news = newsService.getNew(id);
         if( news != null){
-            newsService.delete(id);
+            news.setDeleted(true);
+            newsService.save(news);
             return ResponseEntity.noContent().build(); // 
         } else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "The given id is not found");
+        }
+    }
+
+
+    @GetMapping("/admin/news")
+    public ResponseEntity<?> getEventLists(){
+        List<News> output = newsService.getAdminNews();
+        if( output != null){
+            return ResponseEntity.ok(LabMapper.INSTANCE.getNewsDto(output));
+        } else{
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No news found");
         }
     }
 }

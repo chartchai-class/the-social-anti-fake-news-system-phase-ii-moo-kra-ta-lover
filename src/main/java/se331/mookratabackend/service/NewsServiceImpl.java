@@ -9,6 +9,8 @@ import se331.mookratabackend.dao.NewsDao;
 import se331.mookratabackend.entity.News;
 import se331.mookratabackend.repository.CommentRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class NewsServiceImpl implements NewsService{
@@ -18,6 +20,11 @@ public class NewsServiceImpl implements NewsService{
     @Override
     public Page<News> getNews(Integer pageSize, Integer page) {
         return newsDao.getNews(pageSize, page);
+    }
+
+    @Override
+    public List<News> getAdminNews() {
+        return newsDao.getAdminNews();
     }
 
     @Override

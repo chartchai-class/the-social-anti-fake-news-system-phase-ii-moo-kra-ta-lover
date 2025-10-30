@@ -47,9 +47,10 @@ public class SecurityConfiguration {
                       .requestMatchers("/testSupabase").permitAll()
                       .requestMatchers(HttpMethod.GET,"/news").hasAnyRole("READER", "MEMBER", "ADMIN")
                       .requestMatchers(HttpMethod.DELETE, "/news/**").hasRole("ADMIN")
-                      .requestMatchers("/users").hasRole("ADMIN")
+                      .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                       .requestMatchers("/users/**").hasRole("ADMIN")
                       .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                      .requestMatchers("/admin/**").permitAll()
                       .anyRequest().authenticated();
             })
 

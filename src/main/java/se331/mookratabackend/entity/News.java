@@ -27,4 +27,6 @@ public class News {
     @OneToMany(mappedBy = "news")
     @Builder.Default
     List<Comment> comments = new ArrayList<>();
+
+    private boolean deleted = false;
 }

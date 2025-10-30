@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import se331.mookratabackend.entity.News;
 import se331.mookratabackend.repository.NewsRepository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 @Profile("db")
@@ -17,7 +19,12 @@ public class NewsDaoDbImpl implements NewsDao {
     final NewsRepository newsRepository;
     @Override
     public Page<News> getNews(Integer pageSize, Integer page) {
-        return newsRepository.findAll(PageRequest.of(page-1,pageSize));
+        return newsRepository.findByDeletedFalse(PageRequest.of(page-1,pageSize));
+    }
+
+    @Override
+    public List<News> getAdminNews() {
+        return newsRepository.findByDeletedTrue();
     }
 
     @Override
