@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import se331.mookratabackend.dao.CommentDao;
 import se331.mookratabackend.entity.Comment;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
@@ -14,6 +16,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Page<Comment> getComments(Integer pageSize, Integer page) {
         return commentDao.getComments(pageSize, page);
+    }
+
+    @Override
+    public List<Comment> getAdminComments() {
+        return commentDao.getAdminComments();
     }
 
     @Override

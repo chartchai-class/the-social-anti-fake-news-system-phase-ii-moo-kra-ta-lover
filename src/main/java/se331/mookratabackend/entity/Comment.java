@@ -23,4 +23,6 @@ public class Comment {
     List<String> imageUrls;
     @ManyToOne
     News news;
+
+    private boolean deleted = false;
 }

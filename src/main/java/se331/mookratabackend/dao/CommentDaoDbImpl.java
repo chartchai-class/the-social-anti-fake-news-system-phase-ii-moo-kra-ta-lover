@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import se331.mookratabackend.entity.Comment;
 import se331.mookratabackend.repository.CommentRepository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 @Profile("db")
@@ -15,7 +17,12 @@ public class CommentDaoDbImpl implements CommentDao {
     final CommentRepository commentRepository;
     @Override
     public Page<Comment> getComments(Integer pageSize, Integer page) {
-        return commentRepository.findAll(PageRequest.of(page-1,pageSize));
+        return commentRepository.findByDeletedFalse(PageRequest.of(page-1,pageSize));
+    }
+
+    @Override
+    public List<Comment> getAdminComments() {
+        return commentRepository.findByDeletedTrue();
     }
 
     @Override
