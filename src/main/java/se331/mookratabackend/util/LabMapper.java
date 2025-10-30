@@ -20,6 +20,8 @@ public interface LabMapper {
     CommentDTO getCommentDto(Comment comment);
     List<CommentDTO> getCommentDto(List<Comment> comments);
     UserDTO getUserDto(User user);
+    List<UserDTO> getUserDto(List<User> users);
+
 
 //    @Mapping(target = "roles", source = "user.roles")
 //    OrganizerAuthDTO getOrganizerAuthDto(Organizer organizer);

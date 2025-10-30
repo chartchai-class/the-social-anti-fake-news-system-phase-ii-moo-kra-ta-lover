@@ -46,7 +46,9 @@ public class SecurityConfiguration {
                       .requestMatchers("/uploadFile").permitAll()
                       .requestMatchers("/testSupabase").permitAll()
                       .requestMatchers(HttpMethod.GET,"/news").hasAnyRole("READER", "MEMBER", "ADMIN")
-                      .requestMatchers(HttpMethod.DELETE, "/news/**").permitAll()
+                      .requestMatchers(HttpMethod.DELETE, "/news/**").hasRole("ADMIN")
+                      .requestMatchers("/users").hasRole("ADMIN")
+                      .requestMatchers("/users/**").hasRole("ADMIN")
                       .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                       .anyRequest().authenticated();
             })
@@ -72,7 +74,7 @@ public class SecurityConfiguration {
     public CorsConfigurationSource corsConfigurationSource() {
       CorsConfiguration config = new CorsConfiguration();
       config.setAllowedOriginPatterns(List.of("http://localhost:5173","http://13.212.6.216:8001"));
-      config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
+      config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS","PATCH"));
       config.setAllowedHeaders(List.of("*"));
       config.setExposedHeaders(List.of("x-total-count"));
       config.setAllowCredentials(true);
