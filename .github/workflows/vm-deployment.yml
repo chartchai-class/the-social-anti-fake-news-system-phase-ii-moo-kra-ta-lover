@@ -18,10 +18,11 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
 
-      - name: run maven
+      - name: Build with Maven
         run: |
-          mvn clean install -DskipTests -B
-          mkdir -p target/dependency && (cd target/dependency; unzip ../*.jar)
+          chmod +x mvnw
+          ./mvnw clean package -DskipTests
+          mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
