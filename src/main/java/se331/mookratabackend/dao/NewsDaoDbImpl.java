@@ -39,7 +39,7 @@ public class NewsDaoDbImpl implements NewsDao {
 
     @Override
     public Page<News> getNews(String detail, Pageable pageable) {
-        return newsRepository.findByShortDetailContainingOrFullDetailContaining(detail, detail, pageable);
+        return newsRepository.findByShortDetailContainingOrTopicContainingOrReporterContaining(detail, detail, detail, pageable);
     }
 
     @Override

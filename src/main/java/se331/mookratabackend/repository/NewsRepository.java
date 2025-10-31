@@ -12,5 +12,5 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     List<News> findAll();
     List<News> findByDeletedTrue();
     Page<News> findByDeletedFalse(Pageable pageable);
-    Page<News> findByShortDetailContainingOrFullDetailContaining(String shortDetail, String fullDetail, Pageable pageable);
+    Page<News> findByShortDetailContainingOrTopicContainingOrReporterContaining(String shortDetail, String topic, String reporter, Pageable pageable);
 }
