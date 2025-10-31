@@ -40,7 +40,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: [your-docker-username]/se331-backend:latest
+          tags: eakkasitnim/se331-backend:latest
 
       - name: copy file via ssh password
         uses: appleboy/scp-action@v1
