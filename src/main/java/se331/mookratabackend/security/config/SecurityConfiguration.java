@@ -41,16 +41,39 @@ public class SecurityConfiguration {
             .csrf((crsf) -> crsf.disable())
             .authorizeHttpRequests((authorize) -> {
               authorize
+                      // Public endpoints (no authentication required)
                       .requestMatchers("/api/v1/auth/**").permitAll()
                       .requestMatchers("/uploadImage").permitAll()
                       .requestMatchers("/uploadFile").permitAll()
                       .requestMatchers("/testSupabase").permitAll()
-                      .requestMatchers(HttpMethod.GET,"/news").hasAnyRole("READER", "MEMBER", "ADMIN")
+                      .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                      // News permissions
+                      .requestMatchers(HttpMethod.GET, "/news/**").hasRole("READER")
+                      .requestMatchers(HttpMethod.GET, "/news/**").hasRole("MEMBER")
+                      .requestMatchers(HttpMethod.GET, "/news/**").hasRole("ADMIN")
+
+                      .requestMatchers(HttpMethod.POST, "/news/**").hasRole("MEMBER")
+                      .requestMatchers(HttpMethod.POST, "/news/**").hasRole("ADMIN")
+
                       .requestMatchers(HttpMethod.DELETE, "/news/**").hasRole("ADMIN")
-                      .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
+
+                      // Comments (used as votes)
+                      .requestMatchers(HttpMethod.POST, "/comments/**").hasRole("READER")
+                      .requestMatchers(HttpMethod.POST, "/comments/**").hasRole("MEMBER")
+                      .requestMatchers(HttpMethod.POST, "/comments/**").hasRole("ADMIN")
+
+                      .requestMatchers(HttpMethod.DELETE, "/comments/**").hasRole("ADMIN")
+                      .requestMatchers(HttpMethod.GET, "/admin/comments/**").hasRole("ADMIN")
+
+                      // User management
+                      .requestMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
                       .requestMatchers("/users/**").hasRole("ADMIN")
-                      .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                      .requestMatchers("/admin/**").permitAll()
+
+                      // Admin-only endpoints
+                      .requestMatchers("/admin/**").hasRole("ADMIN")
+
+                      // All other requests require authentication
                       .anyRequest().authenticated();
             })
 
