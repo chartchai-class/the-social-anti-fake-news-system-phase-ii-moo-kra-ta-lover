@@ -43,15 +43,15 @@ jobs:
           tags: [your-docker-username]/se331-backend:latest
 
       - name: copy file via ssh password
-      uses: appleboy/scp-action@v1
-      with:
-        host: ${{ secrets.HOST_SERVER }}
-        username: ${{ secrets.HOST_USER_NAME }}
-        key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
-        port: 22
-        source: "docker-compose-prod.yml"
-        target: "/home/ubuntu/backend"
-        overwrite: true
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.HOST_SERVER }}
+          username: ${{ secrets.HOST_USER_NAME }}
+          key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
+          port: 22
+          source: "docker-compose-prod.yml"
+          target: "/home/ubuntu/backend"
+          overwrite: true
 
       - name: docker compose
         uses: appleboy/ssh-action@v1
