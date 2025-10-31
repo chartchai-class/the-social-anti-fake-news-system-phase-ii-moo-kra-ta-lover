@@ -49,20 +49,12 @@ public class SecurityConfiguration {
                       .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                       // News permissions
-                      .requestMatchers(HttpMethod.GET, "/news/**").hasRole("READER")
-                      .requestMatchers(HttpMethod.GET, "/news/**").hasRole("MEMBER")
-                      .requestMatchers(HttpMethod.GET, "/news/**").hasRole("ADMIN")
-
-                      .requestMatchers(HttpMethod.POST, "/news/**").hasRole("MEMBER")
-                      .requestMatchers(HttpMethod.POST, "/news/**").hasRole("ADMIN")
-
+                      .requestMatchers(HttpMethod.GET, "/news/**").hasAnyRole("READER", "MEMBER", "ADMIN")
+                      .requestMatchers(HttpMethod.POST, "/news/**").hasAnyRole("MEMBER", "ADMIN")
                       .requestMatchers(HttpMethod.DELETE, "/news/**").hasRole("ADMIN")
 
                       // Comments (used as votes)
-                      .requestMatchers(HttpMethod.POST, "/comments/**").hasRole("READER")
-                      .requestMatchers(HttpMethod.POST, "/comments/**").hasRole("MEMBER")
-                      .requestMatchers(HttpMethod.POST, "/comments/**").hasRole("ADMIN")
-
+                      .requestMatchers(HttpMethod.POST, "/comments/**").hasAnyRole("READER", "MEMBER", "ADMIN")
                       .requestMatchers(HttpMethod.DELETE, "/comments/**").hasRole("ADMIN")
                       .requestMatchers(HttpMethod.GET, "/admin/comments/**").hasRole("ADMIN")
 
