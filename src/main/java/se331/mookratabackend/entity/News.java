@@ -2,7 +2,7 @@ package se331.mookratabackend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
+import org.hibernate.annotations.SQLRestriction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +26,7 @@ public class News {
     String imageUrl;
     @OneToMany(mappedBy = "news")
     @Builder.Default
+    @SQLRestriction("deleted = false")
     List<Comment> comments = new ArrayList<>();
 
     private boolean deleted = false;
