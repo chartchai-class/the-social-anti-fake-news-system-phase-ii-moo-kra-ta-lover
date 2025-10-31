@@ -5,16 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewsCommentDTO {
+public class CommentUserDTO {
     Long id;
-    CommentUserDTO user;
-    String vote;
-    String comment;
-    List<String> imageUrls;
+    String firstname;
+    String lastname;
 }

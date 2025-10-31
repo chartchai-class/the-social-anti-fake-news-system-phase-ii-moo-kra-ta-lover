@@ -9,7 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CommentDTO {
     Long id;
-    String user;
+    CommentUserDTO user;
     String vote;
     String comment;
     List<String> imageUrls;
