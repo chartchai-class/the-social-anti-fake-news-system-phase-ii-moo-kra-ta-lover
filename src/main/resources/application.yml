@@ -1,0 +1,36 @@
+#spring.application.name=331-backend
+spring:
+  application:
+    name: moo-kra-ta-backend
+  profiles:
+    active:
+      - db
+  datasource:
+    url: jdbc:mysql://localhost:3308/mookratadb?createDatabaseIfNotExist=true&autoReconnect=true&characterEncoding=UTF-8&allowMultiQueries=true&allowPublicKeyRetrieval=true&useSSL=false&Unicode=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: password
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: create
+  servlet:
+    multipart:
+      max-file-size: 10MB
+application:
+  security:
+    jwt:
+      secret-key: 279dda296b97ea20e2c92ca74abc85aeac848da3a6f9cc055ece6af795539ba465a1226c72374ca1e698e0b8f1c330580d6745c8863aa500bbab703133d19c15
+      expiration: 86400000
+      refresh-token:
+        expiration: 604800000
+supabase:
+  storage:
+    endpoint: https://kkmdubclqwbnsmogwnbs.storage.supabase.co/storage/v1/s3
+    endpoint_output: https://kkmdubclqwbnsmogwnbs.storage.supabase.co/storage/v1/object/public
+    bucket: Mookrata
+    region: us-west-1
+    accessKey: 732c8fdd48d572da154f2742079867fb
+    secretKey: 0613f42b4dd51fd29fe4f0926d6d155a536555c033cb01a64beb3ee403bb2fd1
