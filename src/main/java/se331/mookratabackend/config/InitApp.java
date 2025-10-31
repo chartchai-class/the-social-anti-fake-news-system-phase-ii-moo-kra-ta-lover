@@ -12,9 +12,9 @@ import se331.mookratabackend.entity.News;
 import se331.mookratabackend.entity.Comment;
 import se331.mookratabackend.repository.CommentRepository;
 import se331.mookratabackend.repository.NewsRepository;
+import se331.mookratabackend.security.user.Role;
 import se331.mookratabackend.security.user.User;
 import se331.mookratabackend.security.user.UserRepository;
-import se331.mookratabackend.security.user.Role;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
-
     @Autowired
     final NewsRepository newsRepository;
     final CommentRepository commentRepository;
@@ -35,6 +34,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         News news11, news12, news13, news14, news15, news16, news17, news18, news19, news20;
         Comment comment1, comment2, comment3, comment4, comment5, comment6, comment7, comment8, comment9;
         Comment comment10, comment11, comment12, comment13, comment14;
+
+        addUser();
 
         news1 = newsRepository.save(News.builder()
                 .topic("Scientists Discover Life on Mars")
@@ -56,7 +57,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         // Comments for news2
         comment1 = commentRepository.save(Comment.builder()
-                .user("Mike Lee")
+                .user(user2)
                 .vote("Real")
                 .comment("I've seen their demo at CES with my own eyes, and it's absolutely real technology. They plugged in a phone that was at 5% battery and within seconds it jumped to 100%. The audience was shocked. Of course, we still need to see how it performs outside controlled conditions, but the proof of concept is there.")
                 .imageUrls(Arrays.asList(
@@ -69,7 +70,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment2 = commentRepository.save(Comment.builder()
-                .user("Anna Patel")
+                .user(user7)
                 .vote("Fake")
                 .comment("This seems way too good to be true, and I'm very skeptical. Technology companies sometimes exaggerate what they can do just to gain publicity and funding. Until I can buy this charger and test it myself, I will consider this more of a marketing stunt than a real breakthrough.")
                 .imageUrls(List.of())
@@ -77,7 +78,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment3 = commentRepository.save(Comment.builder()
-                .user("Lucas Smith")
+                .user(user4)
                 .vote("Real")
                 .comment("They explained the battery chemistry during their presentation, and it actually makes sense. The use of graphene conductors and supercapacitors is something scientists have been exploring for years. If they've solved the safety and stability issues, this could be a massive game-changer for the electronics industry.")
                 .imageUrls(List.of())
@@ -85,7 +86,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment4 = commentRepository.save(Comment.builder()
-                .user("Olivia Green")
+                .user(user3)
                 .vote("Real")
                 .comment("I was lucky enough to actually try using the device at the exhibition, and it worked exactly as advertised. My phone charged from nearly dead to full in under 15 seconds. It felt surreal to witness, but I can confirm that at least in that setting, it really works perfectly.")
                 .imageUrls(List.of("https://i.postimg.cc/4x3YHKm4/News02-Comment02.webp"))
@@ -93,7 +94,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment5 = commentRepository.save(Comment.builder()
-                .user("James Wong")
+                .user(user3)
                 .vote("Fake")
                 .comment("I'm skeptical about this whole idea because charging a battery that fast has to come with serious downsides. Even if it works in the short term, I worry that the battery will degrade much faster after multiple charges. Long-term testing needs to be done before people can trust this technology.")
                 .imageUrls(List.of())
@@ -101,7 +102,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment6 = commentRepository.save(Comment.builder()
-                .user("Juju Jaja")
+                .user(user10)
                 .vote("Real")
                 .comment("I have seen multiple independent reviewers post videos about this charger on YouTube, and most of them show that the device actually works as described. Of course, prototypes can be impressive, but it does seem legit based on the feedback. If it passes safety tests, this could be revolutionary.")
                 .imageUrls(List.of())
@@ -109,7 +110,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment7 = commentRepository.save(Comment.builder()
-                .user("Chris Brown")
+                .user(user9)
                 .vote("Real")
                 .comment("Graphene-based technology is widely recognized as the future of high-speed charging and energy storage. Many research labs have been working on this concept, so it's not surprising that someone finally made a working prototype. It might take time before it's affordable, but I believe this technology is real.")
                 .imageUrls(List.of())
@@ -117,7 +118,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment8 = commentRepository.save(Comment.builder()
-                .user("Sophia Lee")
+                .user(user6)
                 .vote("Fake")
                 .comment("Until I can actually buy one of these chargers in a store and use it with my own phone, I don't believe it. Demonstrations can be staged or carefully controlled. Mass production and consumer use are completely different challenges than showing off a single working prototype.")
                 .imageUrls(List.of())
@@ -125,7 +126,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment9 = commentRepository.save(Comment.builder()
-                .user("Daniel Evans")
+                .user(user11)
                 .vote("Real")
                 .comment("Supercapacitors are already proven to work in other industries, so it's not far-fetched that they could be adapted for phones. The biggest hurdle has always been making them safe and efficient for small-scale devices. If this company has cracked the problem, then this is a realistic innovation.")
                 .imageUrls(List.of())
@@ -133,7 +134,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment10 = commentRepository.save(Comment.builder()
-                .user("Maria Gonzalez")
+                .user(user2)
                 .vote("Fake")
                 .comment("Charging a phone in 10 seconds sounds impressive, but the question is how many times you can do that before the battery starts to degrade. Batteries are delicate, and charging them so fast could create long-term issues. I'm not convinced this is something consumers can rely on yet.")
                 .imageUrls(List.of())
@@ -141,7 +142,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment11 = commentRepository.save(Comment.builder()
-                .user("Tommy Nguyen")
+                .user(user8)
                 .vote("Real")
                 .comment("This kind of innovation could completely change how we use smartphones and other devices. Imagine never having to wait hours for your battery to recharge. If it can be made safe and affordable, this could be one of the biggest technological breakthroughs of the decade.")
                 .imageUrls(List.of())
@@ -149,7 +150,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment12 = commentRepository.save(Comment.builder()
-                .user("Raj Patel")
+                .user(user3)
                 .vote("Fake")
                 .comment("Even Tesla, with all its advanced technology, doesn't have a battery that can charge fully in seconds. If this startup really achieved something that big, it would mean they're ahead of the world's biggest tech companies. I find that very hard to believe without more evidence.")
                 .imageUrls(List.of())
@@ -157,7 +158,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment13 = commentRepository.save(Comment.builder()
-                .user("Emma Wilson")
+                .user(user4)
                 .vote("Real")
                 .comment("CES demos are usually pretty reliable because companies know they'll be under heavy scrutiny from the press and experts. I think the technology is real, but whether it can be scaled up for everyday use is the bigger question. Still, this feels like an exciting step forward.")
                 .imageUrls(List.of())
@@ -165,7 +166,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         comment14 = commentRepository.save(Comment.builder()
-                .user("Laura White")
+                .user(user2)
                 .vote("Fake")
                 .comment("This could just be a flashy prototype designed to get investors excited. Many times in tech history we've seen amazing demos that never reached the consumer market. Until it survives safety testing and mass production, I will remain doubtful about its real-world potential.")
                 .imageUrls(List.of())
@@ -182,7 +183,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("James Gun")
+                .user(user8)
                 .vote("Real")
                 .comment("Trump did announce this. It's real.")
                 .imageUrls(List.of())
@@ -199,7 +200,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Anna Patel")
+                .user(user7)
                 .vote("Fake")
                 .comment("This is clearly made up. No scientific evidence.")
                 .imageUrls(List.of())
@@ -216,7 +217,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Anna Patel")
+                .user(user5)
                 .vote("Real")
                 .comment("Reported by Times of India, definitely real.")
                 .imageUrls(List.of())
@@ -233,7 +234,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Olivia Green")
+                .user(user10)
                 .vote("Fake")
                 .comment("This is clearly fake news. No official announcements.")
                 .imageUrls(List.of())
@@ -250,7 +251,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Anna Patel")
+                .user(user7)
                 .vote("Real")
                 .comment("Confirmed by multiple news sources.")
                 .imageUrls(List.of())
@@ -267,7 +268,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Lucas Smith")
+                .user(user5)
                 .vote("Real")
                 .comment("I watched the race, Thompson really won.")
                 .imageUrls(List.of())
@@ -284,7 +285,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Anna Patel")
+                .user(user8)
                 .vote("Real")
                 .comment("Looks like the bots are having more fun crashing than competing.")
                 .imageUrls(List.of())
@@ -301,7 +302,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("James Wong")
+                .user(user10)
                 .vote("Real")
                 .comment("Samsung never stops pushing display tech forward—can't wait to see it live.")
                 .imageUrls(List.of())
@@ -318,7 +319,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Lucas Smith")
+                .user(user4)
                 .vote("Real")
                 .comment("GPT-5 thinks faster than I do—I'm both amazed and intimidated.")
                 .imageUrls(List.of())
@@ -335,7 +336,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Mike Lee")
+                .user(user6)
                 .vote("Real")
                 .comment("Imagine if there's a Jupiter cousin nearby—wow.")
                 .imageUrls(List.of())
@@ -352,7 +353,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Olivia Green")
+                .user(user7)
                 .vote("Real")
                 .comment("Finally, something that can help clean up PFAS pollution—huge win.")
                 .imageUrls(List.of())
@@ -369,7 +370,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Sarah Johnson")
+                .user(user11)
                 .vote("Real")
                 .comment("These statues hold so much cultural heritage—it'd be tragic to lose them.")
                 .imageUrls(List.of())
@@ -386,7 +387,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("John Doe")
+                .user(user2)
                 .vote("Real")
                 .comment("Carbon keeps surprising us—can't wait to see how this opens new materials.")
                 .imageUrls(List.of())
@@ -403,7 +404,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Mike Lee")
+                .user(user4)
                 .vote("Real")
                 .comment("Terrible news—another reminder we must take climate threats seriously.")
                 .imageUrls(List.of())
@@ -420,7 +421,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Anna Patel")
+                .user(user10)
                 .vote("Real")
                 .comment("Of all things, jellyfish—nature always finds a way to surprise.")
                 .imageUrls(List.of())
@@ -437,7 +438,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("Lucas Smith")
+                .user(user9)
                 .vote("Real")
                 .comment("Amazing performance—finally seeing French women shine in cycling again!")
                 .imageUrls(List.of())
@@ -454,7 +455,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
 
         commentRepository.save(Comment.builder()
-                .user("James Wong")
+                .user(user3)
                 .vote("Real")
                 .comment("Tensions are flaring over immigration—hope dialogue returns soon.")
                 .imageUrls(List.of())
@@ -468,21 +469,119 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .reporter("David Chen")
                 .reportDate("2025-08-12T09:45:00")
                 .imageUrl("https://i.ibb.co/RF6vtbQ/IE-photo-ratio-19201080-2.webp").build());
-
-        addUser();
     }
-    User user1;
+
+    User user1, user2, user3, user4, user5, user6, user7, user8, user9, user10, user11, user12;
     private void addUser() {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
+
         user1 = User.builder()
                 .password(encoder.encode("admin"))
-                .firstname("admin")
-                .lastname("admin")
+                .firstname("Admin")
+                .lastname("User")
                 .email("admin@admin.com")
                 .build();
-        user1.getRoles().add(Role.ROLE_READER);
-        user1.getRoles().add(Role.ROLE_MEMBER);
         user1.getRoles().add(Role.ROLE_ADMIN);
         userRepository.save(user1);
+
+        user2 = User.builder()
+                .password(encoder.encode("test"))
+                .firstname("Test")
+                .lastname("User")
+                .email("test@gmail.com")
+                .build();
+        user2.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user2);
+
+        user3 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Mike")
+                .lastname("Lee")
+                .email("mike.lee@example.com")
+                .build();
+        user3.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user3);
+
+        user4 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Anna")
+                .lastname("Patel")
+                .email("anna.patel@example.com")
+                .build();
+        user4.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user4);
+
+        user5 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Lucas")
+                .lastname("Smith")
+                .email("lucas.smith@example.com")
+                .build();
+        user5.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user5);
+
+        user6 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Olivia")
+                .lastname("Green")
+                .email("olivia.green@example.com")
+                .build();
+        user6.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user6);
+
+        user7 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("James")
+                .lastname("Wong")
+                .email("james.wong@example.com")
+                .build();
+        user7.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user7);
+
+        user8 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Sophia")
+                .lastname("Lee")
+                .email("sophia.lee@example.com")
+                .build();
+        user8.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user8);
+
+        user9 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Daniel")
+                .lastname("Evans")
+                .email("daniel.evans@example.com")
+                .build();
+        user9.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user9);
+
+        user10 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Maria")
+                .lastname("Gonzalez")
+                .email("maria.gonzalez@example.com")
+                .build();
+        user10.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user10);
+
+        user11 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Tommy")
+                .lastname("Nguyen")
+                .email("tommy.nguyen@example.com")
+                .build();
+        user11.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user11);
+
+        user12 = User.builder()
+                .password(encoder.encode("password"))
+                .firstname("Emma")
+                .lastname("Wilson")
+                .email("emma.wilson@example.com")
+                .build();
+        user12.getRoles().add(Role.ROLE_MEMBER);
+        userRepository.save(user12);
     }
+
 }
